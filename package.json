@@ -1,0 +1,24 @@
+{
+  "name": "inyector",
+  "version": "1.0.0",
+  "description": "Data inyector to Backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chelogithub/INYECTOR.git"
+  },
+  "author": "Marcelo Garcia",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chelogithub/INYECTOR/issues"
+  },
+  "homepage": "https://github.com/chelogithub/INYECTOR#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "request": "^2.88.2",
+    "system-sleep": "^1.3.7"
+  }
+}
