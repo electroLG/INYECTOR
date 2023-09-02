@@ -21,7 +21,7 @@ var deviceArray=[   ['4HAA','MB-LR-PLV',10 ,20 ,30 ,40 ,50 ,60],
 var devNum=0;
 while(1)
 {
-        console.log(devNum);
+        console.log("Sending information of device id= "+ deviceArray[devNum][0]);
         envio(deviceArray[devNum]);
         while (!a)
         {systemSleep(ms);}
@@ -32,6 +32,7 @@ while(1)
 function envio(devARR)
 {  
     a=false;
+    const timeoutId = setTimeout(function(){ a=true; console.log("No answer from Server")}, 5000);
     request.post(
         'http://'+destServer+':'+destPORT+endpoint,
         { json: {   id: devARR[0],
@@ -45,7 +46,8 @@ function envio(devARR)
                  } },
         function (error, response, body) {
             if (!error && response.statusCode == 200) {
-                console.log("Respuesta del body = "+ JSON.stringify(body));
+                console.log("Body response= "+ JSON.stringify(body));
+                clearTimeout(timeoutId);
                 a=true;
             }
         }
