@@ -4,46 +4,45 @@ var http = require('http');
 const systemSleep = require('system-sleep');
 var app = express();
 var PORT = 9000;
+var destServer="localhost";
 var destPORT=8000;
 var endpoint="/inyection";
 var a=true;
 var dataValue=0;
 var ms=300;
+var deviceArray=[   ['4HAA','MB-LR-PLV',10 ,20 ,30 ,40 ,50 ,60],
+                    ['4F4PC','MPLC',11 ,25 ,28 ,48 ,55 ,72],
+                    ['MCP','TEP',28 ,32 ,30 ,33 ,76 ,100],
+                    ['LPC','MPLC',27 ,27 ,27 ,27 ,27 ,27],
+                    ['STM411','TEP',10 ,20 ,30 ,40 ,50 ,80],
+                    ['F57HC','MPLC',10 ,20 ,30 ,40 ,50 ,60],
+                    ['STM103','TEP',10 ,20 ,30 ,40 ,50 ,60],
+                    ['ESP32','MEFL',10 ,20 ,30 ,40 ,50 ,60]];
+var devNum=0;
 while(1)
 {
-        dataValue=Math.floor(Math.random() * 20) + 70;
-        envio('4HAA','MB-LR-PLV');
-
+        console.log(devNum);
+        envio(deviceArray[devNum]);
         while (!a)
         {systemSleep(ms);}
-
-        dataValue=Math.floor(Math.random() * 40) + 150;
-        envio('4F4PC','MPLC');
-
-        while (!a)
-        {systemSleep(ms);}
-
-        dataValue=Math.floor(Math.random() * 5) + 120;
-        envio('STM411','TEP');
-
-        while (!a)
-        {systemSleep(ms);}
-
-        dataValue=Math.floor(Math.random() * 3) + 138;
-        envio('ESP32','MEFL');
-
-        while (!a)
-        {systemSleep(ms);}
-        
+        devNum++;
+        if (devNum==7) devNum=0;
 }
 
-
-function envio(idb,valb)
+function envio(devARR)
 {  
     a=false;
     request.post(
-        'http://localhost:'+destPORT+endpoint,
-        { json: { id: idb,tipo: valb ,valor: dataValue } },//{ json: { id:"4HAAAAA",tipo:"MB-LR-PLC",valor: dataValue } },
+        'http://'+destServer+':'+destPORT+endpoint,
+        { json: {   id: devARR[0],
+                    tipo: devARR[1],
+                    value:  Math.floor(Math.random() * 20) + devARR[2],
+                    value2: Math.floor(Math.random() * 10) + devARR[3],
+                    value3: Math.floor(Math.random() * 5)  + devARR[4],
+                    value4: Math.floor(Math.random() * 2)  + devARR[5],
+                    value5: Math.floor(Math.random() * 1)  + devARR[6],
+                    value6: Math.floor(Math.random() * 20) + devARR[7]
+                 } },
         function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 console.log("Respuesta del body = "+ JSON.stringify(body));
@@ -54,33 +53,6 @@ function envio(idb,valb)
 }
 
 app.use(express.json());
-
-// var options = {
-//     host: 'localhost',
-//     path: '/inyection',
-//     port: '8000',
-//     method: 'POST'
-//   };
-//   callback = function(response) {
-//     var str = ''
-//     response.on('data', function (chunk) {
-//       str += chunk;
-//     });
-  
-//     response.on('end', function () {
-//       console.log(str);
-//     });
-//   }
-//   var req = http.request(options, callback);
-//   //This is the data we are posting, it needs to be a string or a buffer
-//   req.write("hola");
-//   req.end();
-// app.get('/inyection',(req,res)=>{
-        
-//     req.body.json={"id":"4HAAAAA","tipo":"MB-LR-PLC","valor":"Activo"};
-//     console.log("Envío");
-// });
-
 
 app.listen(PORT, function(req, res) {
     console.log("Inyector working on port " + PORT);
