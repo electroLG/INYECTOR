@@ -37,12 +37,12 @@ function envio(devARR)
         'http://'+destServer+':'+destPORT+endpoint,
         { json: {   id: devARR[0],
                     tipo: devARR[1],
-                    value:  Math.floor(Math.random() * 20) + devARR[2],
+                    value:  Math.floor(Math.random() * 20)/10 + devARR[2],
                     value2: Math.floor(Math.random() * 10) + devARR[3],
                     value3: Math.floor(Math.random() * 5)  + devARR[4],
                     value4: Math.floor(Math.random() * 2)  + devARR[5],
                     value5: Math.floor(Math.random() * 1)  + devARR[6],
-                    value6: Math.floor(Math.random() * 20) + devARR[7]
+                    value6: Math.floor(Math.random() * 20)/10 + devARR[7]
                  } },
         function (error, response, body) {
             if (!error && response.statusCode == 200) {
