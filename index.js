@@ -6,10 +6,10 @@ var app = express();
 var PORT = 9000;
 var destServer="localhost";
 var destPORT=8000;
-var endpoint="/inyection";
+var endpoint="/tepelco";
 var a=true;
 var dataValue=0;
-var ms=300;
+var ms=3000;
 var deviceArray=[   ['4HAA','MB-LR-PLV',10 ,20 ,30 ,40 ,50 ,60],
                     ['4F4PC','MPLC',11 ,25 ,28 ,48 ,55 ,72],
                     ['MCP','TEP',28 ,32 ,30 ,33 ,76 ,100],
@@ -36,14 +36,28 @@ function envio(devARR)
     request.post(
         'http://'+destServer+':'+destPORT+endpoint,
         { json: {   id: devARR[0],
-                    tipo: devARR[1],
-                    value:  Math.floor(Math.random() * 20)/10 + devARR[2],
-                    value2: Math.floor(Math.random() * 10) + devARR[3],
-                    value3: Math.floor(Math.random() * 5)  + devARR[4],
-                    value4: Math.floor(Math.random() * 2)  + devARR[5],
-                    value5: Math.floor(Math.random() * 1)  + devARR[6],
-                    value6: Math.floor(Math.random() * 20)/10 + devARR[7]
-                 } },
+            tipo: devARR[1],
+            dp_cartucho:  Math.floor(Math.random() * 20)/10 + devARR[2],
+            dp_filtro: Math.floor(Math.random() * 10) + devARR[3],
+            ciclo_ev1: Math.floor(Math.random() * 5)  + devARR[4],
+            ciclo_ev2: Math.floor(Math.random() * 2)  + devARR[5],
+            ciclo_ev3: Math.floor(Math.random() * 1)  + devARR[6],
+            ciclo_ev4: Math.floor(Math.random() * 5)  + devARR[4],
+            ciclo_ev5: Math.floor(Math.random() * 2)  + devARR[5],
+            ciclo_ev6: Math.floor(Math.random() * 1)  + devARR[6],
+            ciclo_ev7: Math.floor(Math.random() * 5)  + devARR[4],
+            ciclo_ev8: Math.floor(Math.random() * 2)  + devARR[5],
+            devId: 2
+         } },
+        // { json: {   id: devARR[0],
+        //             tipo: devARR[1],
+        //             value:  Math.floor(Math.random() * 20)/10 + devARR[2],
+        //             value2: Math.floor(Math.random() * 10) + devARR[3],
+        //             value3: Math.floor(Math.random() * 5)  + devARR[4],
+        //             value4: Math.floor(Math.random() * 2)  + devARR[5],
+        //             value5: Math.floor(Math.random() * 1)  + devARR[6],
+        //             value6: Math.floor(Math.random() * 20)/10 + devARR[7]
+        //          } },
         function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 console.log("Body response= "+ JSON.stringify(body));
