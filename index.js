@@ -47,6 +47,12 @@ function envio(devARR)
             d8: Math.floor(Math.random() * 1)  + devARR[9],
             d9: Math.floor(Math.random() * 5)  + devARR[10],
             d10: Math.floor(Math.random() * 2)  + devARR[11],
+            d11:  Math.floor(Math.random() * 20)/10 + devARR[2],
+            d12: Math.floor(Math.random() * 10) + devARR[3],
+            d13: 0,//d13: Math.floor(Math.random() * 5)  + devARR[4],
+            //d14: Math.floor(Math.random() * 2)  + devARR[5],
+            d15: Math.floor(Math.random() * 1)  + devARR[6],
+            d16: Math.floor(Math.random() * 5)  + devARR[7],
             devId: 2
          } },
         // { json: {   id: devARR[0],
