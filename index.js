@@ -10,7 +10,7 @@ var endpoint="/logdata";        //var endpoint="/tepelco";
 var a=true;
 var dataValue=0;
 var ms=3000;
-var deviceArray=[   ['4HAA','MB-LR-PLV',10 ,20 ,30 ,40 ,50 ,60, 70 ,80 ,90 ,100 ,110 ,120 ,130]];    //['4HAA','MB-LR-PLV',10 ,20 ,30 ,40 ,50 ,60],    
+var deviceArray=[   ['4HAA','MB-LR-PLV',10 ,20 ,30 ,0 ,50 ,60, 70 ,80 ,90 ,100 ,0 ,0 ,0,19 ,120 ,130]];    //['4HAA','MB-LR-PLV',10 ,20 ,30 ,40 ,50 ,60],    
                     // ['4F4PC','MPLC',11 ,25 ,28 ,48 ,55 ,72],
                     // ['MCP','TEP',28 ,32 ,30 ,33 ,76 ,100],
                     // ['LPC','MPLC',27 ,27 ,27 ,27 ,27 ,27],
@@ -47,12 +47,12 @@ function envio(devARR)
             d8: Math.floor(Math.random() * 1)  + devARR[9],
             d9: Math.floor(Math.random() * 5)  + devARR[10],
             d10: Math.floor(Math.random() * 2)  + devARR[11],
-            d11:  Math.floor(Math.random() * 20)/10 + devARR[2],
-            d12: Math.floor(Math.random() * 10) + devARR[3],
-            d13: 0,//d13: Math.floor(Math.random() * 5)  + devARR[4],
-            //d14: Math.floor(Math.random() * 2)  + devARR[5],
-            d15: Math.floor(Math.random() * 1)  + devARR[6],
-            d16: Math.floor(Math.random() * 5)  + devARR[7],
+            d11:  Math.floor(Math.random() *2) + devARR[12],
+            d12: Math.floor(Math.random() * 2) + devARR[13],
+            d13: Math.floor(Math.random() * 2)  + devARR[14],//d13: 0,//
+            d14: Math.floor(Math.random() * 2)  + devARR[15],
+            d15: Math.floor(Math.random() * 1)  + devARR[16],
+            d16: Math.floor(Math.random() * 5)  + devARR[17],
             devId: 2
          } },
         // { json: {   id: devARR[0],
