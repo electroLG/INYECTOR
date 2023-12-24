@@ -80,7 +80,7 @@ function envio(devARR)
         //          } },
         function (error, response, body) {
             if (!error && response.statusCode == 200) {
-                console.log("Body response= "+ JSON.stringify(body));
+                console.log("Body response = "+ JSON.stringify(body));
                 clearTimeout(timeoutId);
                 a=true;
             }

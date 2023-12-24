@@ -26,3 +26,15 @@ Installing request Library, easy way to post.
 `npm install --save system-sleep`
 
 Installign system-sleep, delay management for timing.
+
+`npm install --save nodemon`
+
+Installing automatic restarting on file changes.
+
+  "scripts": {
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+
+  Para correrlo utilizamos npm run dev
+
