@@ -22,14 +22,16 @@ var devNum=0;
 while(1)
 {
         console.log("Sending information of device id= "+ deviceArray[devNum][0]);
-        envio(deviceArray[devNum]);
+        this.dataValue=2;//this.dataValue=Math.floor(Math.random() * 2)+1;
+        console.log(this.dataValue);
+        envio(deviceArray[devNum], this.dataValue);
         while (!a)
         {systemSleep(ms);}
         // devNum++;
         // if (devNum==7) devNum=0;
 }
 
-function envio(devARR)
+function envio(devARR,devNumID)
 {  
     a=false;
     const timeoutId = setTimeout(function(){ a=true; console.log("No answer from Server")}, 5000);
@@ -37,10 +39,10 @@ function envio(devARR)
         'http://'+destServer+':'+destPORT+endpoint,
         { json: {   id: devARR[0],
             tipo: devARR[1],
-            d1:  Math.floor(Math.random() * 20)/10 + devARR[2],
+            d1:  Math.floor(Math.random() * 20) + devARR[2],
             d2: Math.floor(Math.random() * 10) + devARR[3],
             d3: Math.floor(Math.random() * 5)  + devARR[4],
-            d4: Math.floor(Math.random() * 2)  + devARR[5],
+            d4: Math.floor(Math.random() * 2)*10  + devARR[5],
             d5: Math.floor(Math.random() * 1)  + devARR[6],
             d6: Math.floor(Math.random() * 5)  + devARR[7],
             d7: Math.floor(Math.random() * 2)  + devARR[8],
@@ -53,7 +55,7 @@ function envio(devARR)
             d14: Math.floor(Math.random() * 2)  + devARR[15],
             d15: Math.floor(Math.random() * 1)  + devARR[16],
             d16: Math.floor(Math.random() * 5)  + devARR[17],
-            devId: 2
+            devId: devNumID
          } },
         // { json: {   id: devARR[0],
         //     tipo: devARR[1],
