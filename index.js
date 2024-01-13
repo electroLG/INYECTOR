@@ -9,7 +9,7 @@ var destPORT=8000;
 var endpoint="/logdata";        //var endpoint="/tepelco";
 var a=true;
 var dataValue=0;
-var ms=3000;
+var ms=1500;
 var deviceArray=[   ['4HAA','MB-LR-PLV',10 ,20 ,30 ,0 ,50 ,60, 70 ,80 ,90 ,100 ,0 ,0 ,0,19 ,120 ,130]];    //['4HAA','MB-LR-PLV',10 ,20 ,30 ,40 ,50 ,60],    
                     // ['4F4PC','MPLC',11 ,25 ,28 ,48 ,55 ,72],
                     // ['MCP','TEP',28 ,32 ,30 ,33 ,76 ,100],
@@ -22,7 +22,7 @@ var devNum=0;
 while(1)
 {
         console.log("Sending information of device id= "+ deviceArray[devNum][0]);
-        this.dataValue=2;//this.dataValue=Math.floor(Math.random() * 2)+1;
+        this.dataValue=Math.floor(Math.random() * 10);//this.dataValue=2;//
         console.log(this.dataValue);
         envio(deviceArray[devNum], this.dataValue);
         while (!a)
