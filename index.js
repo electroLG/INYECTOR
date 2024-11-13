@@ -4,7 +4,7 @@ var http = require('http');
 const systemSleep = require('system-sleep');
 var app = express();
 var PORT = 9000;
-var destServer="localhost";
+var destServer="192.168.1.131";
 var destPORT=8000;
 var endpoint="/logdata";        //var endpoint="/tepelco";
 var a=true;
